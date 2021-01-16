@@ -64,7 +64,7 @@ const questions = [
 
 // functions to create readme file
 const writeFile = (fileName, data) => {
-    const content = Markdown(data);
+    const content = markdown(data);
 
     fs.writeToFile(fileName, content,  (err) =>  {
         if (err) console.log(err);
