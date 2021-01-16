@@ -2,7 +2,7 @@
 const inquirer = require("inquirer");
 const { type } = require("os");
 const fs = require("fs");
-const markdown = require("./assets/markdown");
+const markdownReq = require("./assets/markdown");
 
 // questions
 const questions = [
