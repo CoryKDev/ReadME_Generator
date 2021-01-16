@@ -6,48 +6,76 @@ const markdown = require("./assets/markdown");
 
 // questions
 const questions = [
+    {   message: "What is the tile of your project?",
+        name: "title",
+        type: "input",
+    },
     {
-        message: "",
-        name: "",
-        type: "",
+        message: "Add a description of your project.",
+        name: "description",
+        type: "editor",
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "How do you install the application?",
+        name: "installation",
+        type: "editor",
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "How do you use the application?",
+        name: "usage",
+        type: "input",
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "What is your programs License?",
+        name: "license",
+        type: "list",
+        choices: [
+          "Apache License 2.0",
+          new inquirer.Separator(),
+          "GNU General Public License v3.0",
+          new inquirer.Separator(),
+          "MIT License",
+          new inquirer.Separator(),
+          "Mozilla Public License 2.0",
+          new inquirer.Separator(),
+          "The Unlicense",
+        ],
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "Who is contributing to the project?",
+        name: "contributing",
+        type: "input",
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "An example of the working project.",
+        name: "test",
+        type: "input",
       },
       {
-        message: "",
-        name: "",
-        type: "",
+        message: "What is your E-mail address?",
+        name: "questions",
+        type: "input",
       },
-      {
-        message: "",
-        name: "",
-        type: "",
-      },
-
-];
+    ];
+    
     
 
-// function to create readme file
+
+
+// functions to create readme file
+const writeFile = (fileName, data) => {
+    const content = Markdown(data);
+
+    fs.writeToFile(fileName, content,  (err) =>  {
+        if (err) console.log(err);
+    });
+}
+
+const initialize = () => { 
+    inquirer.prompt(questions).then((response) => {
+        writeFile("README_GEN.md", response);
+        console.log(response);
+      });
+    }
+
+    initialize();
