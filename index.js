@@ -63,17 +63,17 @@ const questions = [
 
 
 // functions to create readme file
-const writeFile = (fileName, data) => {
-    const content = markdown(data);
+const writeToFile = (fileName, data) => {
+    const content = markdownReq(data);
 
-    fs.writeToFile(fileName, content,  (err) =>  {
+    fs.writeFile(fileName, content,  (err) =>  {
         if (err) console.log(err);
     });
 }
 
 const initialize = () => { 
     inquirer.prompt(questions).then((response) => {
-        writeFile("README_GEN.md", response);
+        writeToFile("README_GEN.md", response);
         console.log(response);
       });
     }
